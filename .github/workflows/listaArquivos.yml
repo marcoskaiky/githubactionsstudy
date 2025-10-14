@@ -1,1 +1,13 @@
+name: Listar Arquivos
+on: 
+  workflow_dispatch:
 
+jobs:
+  file-operations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código do repositório
+        uses: actions/checkout@v4 
+
+      - name: Listar todos os arquivos
+        run: ls -R
