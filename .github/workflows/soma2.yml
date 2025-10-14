@@ -1,1 +1,13 @@
+name: Calculadora
 
+on:
+  workflow_dispatch:
+
+jobs:
+  calculate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calcular e exibir
+        run: |
+          soma=$((2+2))
+          echo "O resultado de 2+2 é $soma"
