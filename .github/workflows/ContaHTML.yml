@@ -1,4 +1,4 @@
-name: Listar Arquivos
+name: Contar Arquivos HTML
 on: 
   workflow_dispatch:
 
