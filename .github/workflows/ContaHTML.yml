@@ -1,0 +1,15 @@
+name: Listar Arquivos
+on: 
+  workflow_dispatch:
+
+jobs:
+  file-operations:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Contar arquivos HTML
+        run: |          
+          count=$(find . -name '*.html' | wc -l)
+          echo "Existem $count arquivos HTML no repositório."
+
+
