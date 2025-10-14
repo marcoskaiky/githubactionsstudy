@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Checkout do código do repositório
+        uses: actions/checkout@v4 
+
       - name: Contar arquivos HTML
         run: |          
           count=$(find . -name '*.html' | wc -l)
