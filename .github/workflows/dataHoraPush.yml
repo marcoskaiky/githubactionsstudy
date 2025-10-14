@@ -1,1 +1,14 @@
+name: Data Hora Push
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  display-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostra a data e hora
+        run: echo "O push foi feito em $(date)"
 
