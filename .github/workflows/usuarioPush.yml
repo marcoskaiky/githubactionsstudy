@@ -9,5 +9,5 @@ jobs:
   display-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Mostra o usuário
+      - name: Mostra o Usuário
         run: echo "Push feito por ${{ github.actor }}"
