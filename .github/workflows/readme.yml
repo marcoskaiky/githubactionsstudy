@@ -22,7 +22,7 @@ jobs:
           echo "" >> README.md
           echo "Este arquivo foi criado automaticamente por uma GitHub Action." >> README.md
           echo "" >> README.md
-          echo "**Data da última execução:** $(date)" >> README.md
+          echo "**Data da última execução:** $(TZ='America/Sao_Paulo' date '+%Y-%m-%d %H:%M')" >> README.md
           echo "" >> README.md
           echo "## Informações da execução" >> README.md
           echo "- Workflow: ${{ github.workflow }}" >> README.md
