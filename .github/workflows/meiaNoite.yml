@@ -8,6 +8,8 @@ on:
 jobs:
   run-at-night:
     runs-on: ubuntu-latest
+    env:
+      TZ: America/Sao_Paulo
     steps:
       - name: Tarefa noturna
         run: echo "Rodando a tarefa da noite... (Agendado para 00:00hr)"
