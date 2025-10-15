@@ -1,1 +1,20 @@
+name: Preencher Readme
 
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:  
+      - name: Preencher Readme
+        run: |
+          echo "Este arquivo foi criado por uma GitHub Action." > README.md
+          echo "A execução ocorreu em $(date)" >> README.md
+          echo "--- Conteúdo do arquivo criado: ---"
