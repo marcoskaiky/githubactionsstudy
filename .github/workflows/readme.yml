@@ -13,8 +13,27 @@ jobs:
       contents: write
 
     steps:  
-      - name: Preencher Readme
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Preencher README
         run: |
-          echo "Este arquivo foi criado por uma GitHub Action." > README.md
-          echo "A execução ocorreu em $(date)" >> README.md
-          echo "--- Conteúdo do arquivo criado: ---"
+          echo "# GitHub Actions Study" > README.md
+          echo "" >> README.md
+          echo "Este arquivo foi criado automaticamente por uma GitHub Action." >> README.md
+          echo "" >> README.md
+          echo "**Data da última execução:** $(date)" >> README.md
+          echo "" >> README.md
+          echo "## Informações da execução" >> README.md
+          echo "- Workflow: ${{ github.workflow }}" >> README.md
+          echo "- Commit: ${{ github.sha }}" >> README.md
+          echo "- Branch: ${{ github.ref_name }}" >> README.md
+          echo "- Ator: ${{ github.actor }}" >> README.md
+
+      - name: Commit e push das mudanças
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --staged --quiet || git commit -m "Atualizar README.md via GitHub Actions"
+          git push
