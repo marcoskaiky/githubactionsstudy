@@ -1,0 +1,23 @@
+name: Checar tamanhos dos arquvios, se maiores de 100kb.
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  check-size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Encontrar arquivos maiores que 100KB
+        run: |
+          find . -type f -size +100k > large_files.txt
+          if [ -s large_files.txt ]; then
+            echo "::error::Arquivos maiores que 100KB foram encontrados:"
+            cat large_files.txt
+            exit 1
+          else
+            echo "Nenhum arquivo maior que 100KB foi encontrado."
+          fi
