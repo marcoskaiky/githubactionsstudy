@@ -1,0 +1,25 @@
+name: Sequential Steps
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-sequential:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 1. Mostrar data
+        run: echo "Data e hora: $(TZ='America/Sao_Paulo' date '+%Y-%m-%d %H:%M')"
+
+      - name: 2. Mostrar usuário
+        run: echo "Usuário: ${{ github.actor }}"
+
+      - name: 3. Contar arquivos HTML, CSS e JS
+        run: |
+          html_count=$(find . -name '*.html' | wc -l)
+          css_count=$(find . -name '*.css' | wc -l)
+          js_count=$(find . -name '*.js' | wc -l)
+          echo "HTML: $html_count, CSS: $css_count, JS: $js_count"
