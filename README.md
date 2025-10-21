@@ -1,19 +1,11 @@
-# GitHub Actions Trabalho
-
-Aluno: Marcos Kaiky Garcia
-
-Aluno: Guilherme Carrera
-
-Enviado no E-mail: fernando.clavisso@gmail.com
-
-
+# GitHub Actions Study
 
 Este arquivo foi criado automaticamente por uma GitHub Action.
 
-**Data da última execução:** 2025-10-14 21:50
+**Data da última execução:** 2025-10-21 08:47
 
 ## Informações da execução
 - Workflow: Preencher Readme
-- Commit: a7516812cadf886800e6cdb1ba8b6e408c56798e
+- Commit: 803030495ea2fa8b9f8b870d7960f17a42803972
 - Branch: main
-- Ator: guiacc12
+- Ator: marcoskaiky
