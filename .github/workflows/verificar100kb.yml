@@ -1,0 +1,26 @@
+name: Verificar arquivos grandes
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verificar-arquivos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Verificar arquivos maiores que 100KB
+        run: |
+          echo "Verificando arquivos maiores que 100KB..."
+          ARQUIVOS_GRANDES=$(find . -type f -size +100k ! -path "./.git/*")
+
+          if [ -n "$ARQUIVOS_GRANDES" ]; then
+            echo "ALERTA: Os seguintes arquivos possuem mais de 100KB:"
+            echo "$ARQUIVOS_GRANDES"
+            echo "Considere otimizar ou comprimir esses arquivos."
+          else
+            echo "Nenhum arquivo maior que 100KB foi encontrado."
+          fi
