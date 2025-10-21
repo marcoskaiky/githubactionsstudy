@@ -1,0 +1,19 @@
+name: Contagem Meia Noite
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  contar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo "Data: $(date -u)"
+          echo "Usuário: $GITHUB_ACTOR"
+          FILES=$(find . -type f \( -iname "*.html" -o -iname "*.css" -o -iname "*.js" \))
+          echo "$FILES"
+          for EXT in html css js; do
+            echo "Total ${EXT^^}: $(echo "$FILES" | grep -iE "\.${EXT}$" | wc -l || true)"
+          done
