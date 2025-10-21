@@ -1,0 +1,19 @@
+name: Contagem Arquivos
+
+on: push
+
+jobs:
+  contar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo "Data: $(date -u)"
+          echo "Usuário: $GITHUB_ACTOR"
+          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} || git ls-tree -r --name-only ${{ github.sha }})
+          echo "$FILES"
+          for EXT in html css js; do
+            echo "${EXT^^} em sequência:"
+            echo "$FILES" | grep -iE "\.${EXT}$" || true
+            echo "Total ${EXT^^}: $(echo "$FILES" | grep -iE "\.${EXT}$" | wc -l || true)"
+          done
